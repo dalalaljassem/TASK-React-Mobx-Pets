@@ -1,17 +1,21 @@
-import petStore from '../petStore';
+import  {useState} from "react";
 
-function PetItem({ pet }) {
+function PetItem({ data , handle }) {
+
+  const [photo, setPhoto] = useState(data.image);
+
+
   return (
-    <div class="col-lg-4 col-md-8 col-sm-10">
-      <div class="single-doctor">
-        <img className="image" alt={pet.name} src={pet.image} />
-        <div class="content">
-          <h3>{pet.name}</h3>
-          <button
-            type="button"
-            class="btn btn-info"
-            onClick={() => petStore.handleAdopt(pet.id)}
-          >
+    
+    <div className="col-lg-4 col-md-8 col-sm-10">
+      <div className="single-doctor">
+        <img className="image" alt={data.name} src={photo}/>
+        <div className="content">
+          <h3>{data.name}</h3>
+          <button type="button" onClick={() => setPhoto(data.image2)} className="btn btn-info">
+            Pet
+          </button>
+          <button type="button" onClick={() => handle(data.id)} class="btn btn-info  m-2">
             Adopt
           </button>
         </div>
@@ -19,4 +23,5 @@ function PetItem({ pet }) {
     </div>
   );
 }
-export default PetItem
+
+export default PetItem;
